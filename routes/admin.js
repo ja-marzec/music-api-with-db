@@ -5,8 +5,13 @@ const Music = require('../models/Music')
 
 
 router.get('/', async (req,res) => {
-    const music = await Music.find();
-    res.send(music)
+    try{
+        const music = await Music.find();
+        res.send(music)
+    
+    }catch(err) {
+        console.log(err);
+    }
 })
 
 router.post('/', async (req,res) => {
@@ -18,16 +23,20 @@ router.post('/', async (req,res) => {
     });
     try{
         const savedPost  = await  data.save();
-        req.json(savedPost)
-
-    }catch(err) {
-        console.log(err);
+        res.json(savedPost)
+    } catch(err) {
+        res.json({message: err})
     }
 })
 
-router.delete('/', async(req,res) => {
-    // will take title;
-    const deleteName = (req.body);
-})
+router.delete("/", async (req,res) => {
+    try {
+        const music = await Music.remove({title : req.body.title});
+        console.log(music);
+        Post.remove({title : music}) 
+    }catch(err) {
+        res.json        
+    }
+    })
 
 module.exports = router;

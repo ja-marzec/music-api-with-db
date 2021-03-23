@@ -38,9 +38,8 @@ router.delete("/:id", async (req,res) => {
 try {
     const post = await Post.remove({_id : req.params.id});
     Post.remove({_id: post}) 
-
 }catch(err) {
-res.json({message: err})
+    res.json        
 }
 })
 
