@@ -22,7 +22,7 @@ router.post('/', async (req,res) => {
         url: req.body.url
     });
     try{
-        const savedPost  = await  data.save();
+        const savedPost  = await data.save();
         res.json(savedPost)
     } catch(err) {
         res.json({message: err})
@@ -32,10 +32,10 @@ router.post('/', async (req,res) => {
 router.delete("/", async (req,res) => {
     try {
         const music = await Music.remove({title : req.body.title});
-        console.log(music);
         Post.remove({title : music}) 
+        res.send("deltedItem:", music)
     }catch(err) {
-        res.json        
+        res.json(err)        
     }
     })
 
