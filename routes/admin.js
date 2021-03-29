@@ -27,13 +27,17 @@ router.post('/', async (req,res) => {
     } catch(err) {
         res.json({message: err})
     }
+
+    
 })
 
 router.delete("/", async (req,res) => {
     try {
-        const music = await Music.remove({title : req.body.title});
-        Post.remove({title : music}) 
-        res.send("deltedItem:", music)
+        const musicId = await Music.remove({_id : req.body.id});
+        Post.remove({_id : musicId}) 
+        res.json("deltedItem:")
+        res.send("deltedItem:")
+
     }catch(err) {
         res.json(err)        
     }
