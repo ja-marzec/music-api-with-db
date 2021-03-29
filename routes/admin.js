@@ -9,7 +9,7 @@ router.get('/', async (req,res) => {
         const music = await Music.find();
         res.send(music)
     
-    }catch(err) {
+    } catch(err) {
         console.log(err);
     }
 })

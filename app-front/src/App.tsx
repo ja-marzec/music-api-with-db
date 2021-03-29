@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react'
 import { set } from 'mongoose';
 import PersistentDrawerRight from './components/Header'
-
+import {Data} from './Model'
 
 function App() {
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Array<Data>>([]);
 
   useEffect(() => {
     async function loadData() {
@@ -24,10 +23,10 @@ function App() {
   }, [])
 
 
-  const genres = () => {
+  const genres () => JSX.Element = () => {
       return  data.map(_ => {
         return (
-          <div class="genre__card">
+          <div className="genre__card">
             <p>da</p>
           </div>
         )
@@ -44,7 +43,7 @@ function App() {
         <div className="songs__container">
           {data.map(item => {
             return (
-              <div class="card">
+              <div className="card">
                 <a href={item.url} className="tittle"> {item.title}</a>
               </div>
             )
