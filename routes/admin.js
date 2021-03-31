@@ -3,31 +3,22 @@ const { rawListeners } = require('../models/Music');
 const router = express.Router();
 const Music = require('../models/Music')
 
-
-router.get('/', async (req,res) => {
-    const music = await Music.find();
-    res.send(music)
-})
-
-router.post('/', async (req,res) => {
-    const data = new Music({
-        title: req.body.title,
-        author: req.body.author,
-        genre: req.body.genrem,
-        url: req.body.url
-    });
+router.post('/',  (req,res) => {
     try{
-        const savedPost  = await  data.save();
-        req.json(savedPost)
-
-    }catch(err) {
-        console.log(err);
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
+        res.setHeader('Access-Control-Allow-Credentials', true); // If needed
+        const password = req.body.password;
+        console.log(password);
+        if(password === process.env.ADMIN_PASSWORD) {
+            res.send("OK")
+        } else {
+            res.send({message: "NOT_OK"})
+        }
+    } catch(err) {
+        res.send("WRONG PASSWORD", err);
     }
-})
-
-router.delete('/', async(req,res) => {
-    // will take title;
-    const deleteName = (req.body);
 })
 
 module.exports = router;

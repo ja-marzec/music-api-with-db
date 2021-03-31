@@ -1,0 +1,61 @@
+.App {
+  background-color: black;
+  min-height: 100vh;
+  color: white
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-float infinite 3s ease-in-out;
+  }
+}
+
+.tile__section{
+width: 90%;
+margin: 0 auto;
+padding-top: 30px;
+
+}
+h1{
+  font-size: 30px;
+}
+.tile__wrapper{
+  display: flex;
+  justify-content: center;
+}
+.tile{
+  padding: 1em;
+  margin: 0.5em;
+  background-color: rgba(225, 225, 225, 0.2);
+  width: 90%;
+  border-radius: 10px;
+}
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-link {
+  color: rgb(112, 76, 182);
+}
+
+@keyframes App-logo-float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px)
+  }
+  100% {
+    transform: translateY(0px)
+  }
+}
