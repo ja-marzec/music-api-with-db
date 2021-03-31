@@ -2,7 +2,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, RootState } from '../app/store';
 
 export type Music = {
-    id: string,
     title: string,
     author: string,
     genre: string,
@@ -11,12 +10,17 @@ export type Music = {
 
 interface CounterState {
   music: Array<Music> | []
-  musicToPost: Music | {}
+  musicToPost: Music 
 }
 
 const initialState: CounterState = {
   music: [],
-  musicToPost: {}
+  musicToPost: {
+    title: "",
+    author: "",
+    genre: "",
+    url: ""
+  }
 };
 
 export const counterSlice = createSlice({
@@ -27,10 +31,14 @@ export const counterSlice = createSlice({
     setMusic: (state, action: PayloadAction<Array<Music>>) => {
       state.music = action.payload;
     },
+    setDataToSend: (state, 
+      action: {type: string, payload: {key: keyof Music, val: string}}) => {
+        state.musicToPost[action.payload.key] = action.payload.val
+    }
   },
 });
 
-export const { setMusic } = counterSlice.actions;
+export const { setMusic, setDataToSend } = counterSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This

@@ -12,7 +12,7 @@ const adminRoutes = require('./routes/admin')
 
 // MIDDLEWARE
 app.use(bodyParser.json());
-app.use(cors({origin:   `http://localhost:${PORT}/`}));
+app.use(cors());
 app.use("/post", postRoutes);
 app.use("/", musicRoutes);
 app.use("/admin", adminRoutes);

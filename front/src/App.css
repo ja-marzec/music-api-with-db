@@ -1,5 +1,7 @@
 .App {
-  text-align: center;
+  background-color: black;
+  min-height: 100vh;
+  color: white
 }
 
 .App-logo {
@@ -13,6 +15,26 @@
   }
 }
 
+.tile__section{
+width: 90%;
+margin: 0 auto;
+padding-top: 30px;
+
+}
+h1{
+  font-size: 30px;
+}
+.tile__wrapper{
+  display: flex;
+  justify-content: center;
+}
+.tile{
+  padding: 1em;
+  margin: 0.5em;
+  background-color: rgba(225, 225, 225, 0.2);
+  width: 90%;
+  border-radius: 10px;
+}
 .App-header {
   min-height: 100vh;
   display: flex;
