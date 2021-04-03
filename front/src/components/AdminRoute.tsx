@@ -7,6 +7,7 @@ const AdminRoute: React.FC<{
         exact: boolean;
     }> = (props) => {
 
+
     const condition = 1 === 1
 
     return  condition ? (<Route  path={props.path}  exact={props.exact} component={props.component} />) : 

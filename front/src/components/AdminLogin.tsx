@@ -23,7 +23,7 @@ function attemptLogin() {
     axios.post("http://localhost:5000/admin", { password: input })
     .then(res => {
         if(res.data === "OK") {
-                setRedirect(true)
+                setRedirect(true);
         } else {
             alert("wrong password");
         }

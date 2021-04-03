@@ -32,13 +32,35 @@ export const counterSlice = createSlice({
       state.music = action.payload;
     },
     setDataToSend: (state, 
-      action: {type: string, payload: {key: keyof Music, val: string}}) => {
-        state.musicToPost[action.payload.key] = action.payload.val
-    }
+      action: {type: string, payload: {keyName: keyof Music, val: string}}) => {
+        state.musicToPost[action.payload.keyName] = action.payload.val
+    },
+    resetDataToSend: (state) => {
+      //  @ts-ignore
+      let setAll = (obj:Music, val: string) => Object.keys(obj).forEach((k : keyof Music ) => obj[k] = val);
+      let setNull = (obj:Music ) => setAll(obj, "");
+      setNull(state.musicToPost);
+    },
+    addMusic: (state, action: PayloadAction<Music>) => {
+      const newState = [...state.music, ...[action.payload]];
+      console.log(newState);
+      state.music = newState;
+    },
+    deleteItemFromDisplay: (state, action: PayloadAction<string>) => {
+      console.log(action.payload);
+      
+        const newState = [...state.music]
+        const filtedState = newState.filter((item : any) =>  (item._id !== action.payload))
+
+        console.log(filtedState)
+        state.music = filtedState;
+
+    } 
   },
 });
 
-export const { setMusic, setDataToSend } = counterSlice.actions;
+export const { setMusic, setDataToSend, addMusic, resetDataToSend, deleteItemFromDisplay
+ } = counterSlice.actions;
 
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This

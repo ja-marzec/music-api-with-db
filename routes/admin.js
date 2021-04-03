@@ -5,12 +5,7 @@ const Music = require('../models/Music')
 
 router.post('/',  (req,res) => {
     try{
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
-        res.setHeader('Access-Control-Allow-Credentials', true); // If needed
         const password = req.body.password;
-        console.log(password);
         if(password === process.env.ADMIN_PASSWORD) {
             res.send("OK")
         } else {
@@ -20,5 +15,18 @@ router.post('/',  (req,res) => {
         res.send("WRONG PASSWORD", err);
     }
 })
-
+// router.post('/', async (req,res) => {
+//     const data = new Music({
+//         title: req.body.title,
+//         author: req.body.author,
+//         genre: req.body.genre,
+//         url: req.body.url
+//     });
+//     try{
+//         const savedPost  = await data.save();
+//         res.json(savedPost)
+//     } catch(err) {
+//         res.json({message: err})
+//     }
+// })
 module.exports = router;
