@@ -7,7 +7,6 @@ export default function AddMusic() {
 
     const dispatch = useDispatch();
     const music = useSelector(selectMusic);
-
      interface Music  {
         title: string,
         author: string,

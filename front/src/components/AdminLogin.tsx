@@ -15,15 +15,16 @@ export default function AdminLogin(){
 const [input, setIinput] = useState<string>("");
 const [redirect, setRedirect] = useState<boolean>(false);
 
-
 function changeInput(e:any) {
     setIinput(e.target.value)
 }
+
 function attemptLogin() {
     axios.post("http://localhost:5000/admin", { password: input })
     .then(res => {
         if(res.data === "OK") {
                 setRedirect(true);
+                document.cookie = `token=${res.data}`
         } else {
             alert("wrong password");
         }

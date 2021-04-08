@@ -8,9 +8,10 @@ const AdminRoute: React.FC<{
     }> = (props) => {
 
 
-    const condition = 1 === 1
+    const condition = document.cookie === 'token=OK'
 
-    return  condition ? (<Route  path={props.path}  exact={props.exact} component={props.component} />) : 
+    return  condition ? 
+        (<Route  path={props.path}  exact={props.exact} component={props.component} />) : 
         (<Redirect  to="/login"  />);
 };
 export  default  AdminRoute;

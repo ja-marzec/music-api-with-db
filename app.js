@@ -8,9 +8,10 @@ const PORT = 5000;
 const postRoutes = require('./routes/post')
 const musicRoutes = require('./routes/music')
 const adminRoutes = require('./routes/admin')
-
+var cookieParser = require('cookie-parser');
 
 // MIDDLEWARE
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(cors());
 app.use("/post", postRoutes);

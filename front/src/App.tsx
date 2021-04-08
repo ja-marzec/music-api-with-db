@@ -49,7 +49,7 @@ console.log(musicByGenre());
     <BrowserRouter>
     <Route  path="/"  component={MusicDisplay} exact  />
     <Route  path="/login"  component={AdminLogin} exact  />
-    <AdminRoute  path="/admin"  component={AddMusic}  exact  />
+    <Route  path="/admin"  component={AddMusic}  exact  />
      </BrowserRouter>
    
   );
