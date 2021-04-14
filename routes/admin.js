@@ -16,18 +16,5 @@ router.post('/',  (req,res) => {
         res.send("WRONG PASSWORD", err);
     }
 })
-// router.post('/', async (req,res) => {
-//     const data = new Music({
-//         title: req.body.title,
-//         author: req.body.author,
-//         genre: req.body.genre,
-//         url: req.body.url
-//     });
-//     try{
-//         const savedPost  = await data.save();
-//         res.json(savedPost)
-//     } catch(err) {
-//         res.json({message: err})
-//     }
-// })
+
 module.exports = router;
